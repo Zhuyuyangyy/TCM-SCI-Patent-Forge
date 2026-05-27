@@ -1,0 +1,18 @@
+{
+  "RuleOnly": {
+    "accuracy": 0.076,
+    "five_elem_consistency": 0.6055
+  },
+  "RandomBaseline": {
+    "accuracy": 0.0695,
+    "five_elem_consistency": 0.5885
+  },
+  "FiveElementsGNN": {
+    "top3": [
+      "心肾不交",
+      "心火亢盛",
+      "脾胃湿热"
+    ],
+    "fe_consistency": 0.6356240548193455
+  }
+}

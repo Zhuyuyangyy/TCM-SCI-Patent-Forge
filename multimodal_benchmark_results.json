@@ -1,0 +1,10 @@
+{
+  "TongueOnly": 0.41999998688697815,
+  "VoiceOnly": 0.18000000715255737,
+  "FaceOnly": 0.6800000071525574,
+  "EarlyFusion": 0.5600000023841858,
+  "LateFusion": 0.6100000143051147,
+  "CrossAttn_3modal": 0.24,
+  "CrossAttn_2modal": 0.23,
+  "CrossAttn_1modal": 0.47
+}
