@@ -8,3 +8,13 @@ build/
 .venv/
 venv/
 *.log
+
+# Patent and SCI paper files (confidential, do not commit)
+patents/
+papers/
+# Patent claims in project dirs
+projects/*/patent_*_claims.md
+projects/patent_audit_report.md
+# Generated files
+generated/
+generate_batch_log.json
