@@ -1,0 +1,25 @@
+# 09-TCM-DiffRAG-plus Dependencies
+
+# Core
+torch>=2.0.0
+numpy>=1.24.0
+
+# RAG
+langchain>=0.0.250
+chromadb>=0.4.0
+huggingface-hub>=0.16.0
+
+# Transformers
+transformers>=4.30.0
+
+# Knowledge Graph
+rdflib>=7.0.0
+
+# Data Processing
+pandas>=2.0.0
+
+# Visualization
+matplotlib>=3.7.0
+
+# Logging
+loguru>=0.7.0

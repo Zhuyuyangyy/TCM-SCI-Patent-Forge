@@ -1,0 +1,111 @@
+{
+  "nodes": {
+    "n1": {
+      "type": "syndrome",
+      "name": "肝郁气滞",
+      "properties": {"properties": "主证", "wuxing": "木", "description": "肝主疏泄功能失常，气机郁滞"}
+    },
+    "n2": {
+      "type": "syndrome",
+      "name": "肝郁化火",
+      "properties": {"properties": "变证", "wuxing": "木", "description": "肝郁日久，化火生热"}
+    },
+    "n3": {
+      "type": "syndrome",
+      "name": "心脾两虚",
+      "properties": {"properties": "虚证", "wuxing": "火", "description": "心血不足，脾气虚弱"}
+    },
+    "n4": {
+      "type": "syndrome",
+      "name": "脾胃湿热",
+      "properties": {"properties": "实证", "wuxing": "土", "description": "湿热内蕴，脾胃运化失常"}
+    },
+    "n5": {
+      "type": "syndrome",
+      "name": "肺肾阴虚",
+      "properties": {"properties": "虚证", "wuxing": "金", "description": "肺阴不足，肾阴亏虚"}
+    },
+    "n6": {
+      "type": "symptom",
+      "name": "胁肋胀痛",
+      "properties": {}
+    },
+    "n7": {
+      "type": "symptom",
+      "name": "情绪抑郁",
+      "properties": {}
+    },
+    "n8": {
+      "type": "symptom",
+      "name": "暖气频繁",
+      "properties": {}
+    },
+    "n9": {
+      "type": "symptom",
+      "name": "脉弦",
+      "properties": {}
+    },
+    "n10": {
+      "type": "symptom",
+      "name": "心悸失眠",
+      "properties": {}
+    },
+    "n11": {
+      "type": "symptom",
+      "name": "食欲不振",
+      "properties": {}
+    },
+    "n12": {
+      "type": "symptom",
+      "name": "腹胀便溏",
+      "properties": {}
+    },
+    "n13": {
+      "type": "symptom",
+      "name": "咳嗽痰多",
+      "properties": {}
+    },
+    "n14": {
+      "type": "symptom",
+      "name": "腰膝酸软",
+      "properties": {}
+    },
+    "n15": {
+      "type": "prescription",
+      "name": "逍遥散",
+      "properties": {"composition": "柴胡、当归、白芍、白术、茯苓、甘草", "efficacy": "疏肝解郁，健脾养血", "roles": {"柴胡": "jun", "当归": "chen", "白芍": "chen", "白术": "zuo", "茯苓": "zuo", "甘草": "shi"}}
+    },
+    "n16": {
+      "type": "prescription",
+      "name": "柴胡疏肝散",
+      "properties": {"composition": "柴胡、陈皮、川芎、香附、枳壳、芍药、甘草", "efficacy": "疏肝理气，和血止痛", "roles": {"柴胡": "jun", "香附": "chen", "川芎": "chen", "枳壳": "zuo", "陈皮": "zuo", "芍药": "shi", "甘草": "shi"}}
+    },
+    "n17": {
+      "type": "prescription",
+      "name": "归脾汤",
+      "properties": {"composition": "人参、白术、茯苓、酸枣仁、龙眼肉、黄芪、当归、远志、木香、炙甘草", "efficacy": "益气补血，健脾养心", "roles": {"人参": "jun", "黄芪": "chen", "当归": "chen", "白术": "zuo", "茯苓": "zuo", "酸枣仁": "shi"}}
+    },
+    "n18": {
+      "type": "prescription",
+      "name": "二陈汤",
+      "properties": {"composition": "半夏、陈皮、茯苓、甘草", "efficacy": "燥湿化痰，理气和中", "roles": {"半夏": "jun", "陈皮": "chen", "茯苓": "zuo", "甘草": "shi"}}
+    }
+  },
+  "edges": [
+    ["n6", "indicates", "n1"],
+    ["n7", "indicates", "n1"],
+    ["n8", "indicates", "n1"],
+    ["n9", "indicates", "n1"],
+    ["n1", "can_transform_to", "n2"],
+    ["n10", "indicates", "n3"],
+    ["n11", "indicates", "n4"],
+    ["n12", "indicates", "n4"],
+    ["n13", "indicates", "n5"],
+    ["n14", "indicates", "n5"],
+    ["n1", "treated_by", "n15"],
+    ["n1", "treated_by", "n16"],
+    ["n2", "treated_by", "n16"],
+    ["n3", "treated_by", "n17"],
+    ["n4", "treated_by", "n18"]
+  ]
+}

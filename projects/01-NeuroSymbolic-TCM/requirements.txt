@@ -1,0 +1,24 @@
+# 01-NeuroSymbolic-TCM Dependencies
+
+# Core
+torch>=2.0.0
+torch-geometric>=2.3.0
+networkx>=3.1
+numpy>=1.24.0
+
+# Transformers
+transformers>=4.30.0
+accelerate>=0.20.0
+
+# Knowledge Graph
+rdflib>=7.0.0
+
+# Data Processing
+pandas>=2.0.0
+scipy>=1.10.0
+
+# Visualization
+matplotlib>=3.7.0
+
+# Logging
+loguru>=0.7.0

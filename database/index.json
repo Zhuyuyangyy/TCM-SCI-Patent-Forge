@@ -1,0 +1,300 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2024-05-10T23:55:00+08:00",
+  "description": "TCM-SCI-Patent-Forge 核心索引数据库",
+  
+  "projects": {
+    "01-NeuroSymbolic-TCM": {
+      "name": "NeuroSymbolic-TCM",
+      "name_cn": "神经符号混合中医推理系统",
+      "description": "结合神经网络学习和符号逻辑推理的中医智能辨证论治系统",
+      "keywords": ["neuro-symbolic", "knowledge graph", "Jun-Chen-Zuo-Shi", "Five Elements", "transformer"],
+      "patent_ids": ["003", "009", "015"],
+      "paper_ids": ["A"],
+      "direction_ids": ["001", "002", "016", "017", "018", "019", "020"],
+      "tech_stack": ["PyTorch", "PyG", "Transformers", "NetworkX"],
+      "verification_metrics": {
+        "accuracy": {"target": 0.89, "unit": "ratio"},
+        "f1_score": {"target": 0.876, "unit": "ratio"},
+        "auc": {"target": 0.921, "unit": "ratio"}
+      },
+      "files": {
+        "core": ["kg_builder.py", "syndrome_differentiator.py", "verification_layer.py", "jun_chen_attention.py"],
+        "demo": "demo.py",
+        "main": "main.py"
+      },
+      "status": "active"
+    },
+    "02-AudioSense-TCM": {
+      "name": "AudioSense-TCM",
+      "name_cn": "中医闻诊语音感知系统",
+      "description": "基于变分自编码器的中医闻诊语音情感分析与脏腑映射",
+      "keywords": ["VAE", "audio analysis", "emotion recognition", "zangfu mapping", "TCM diagnosis"],
+      "patent_ids": ["004"],
+      "paper_ids": ["B"],
+      "direction_ids": ["003", "004", "005"],
+      "tech_stack": ["PyTorch", "librosa", "torchaudio"],
+      "verification_metrics": {
+        "f1_score": {"target": 0.80, "unit": "ratio"}
+      },
+      "files": {
+        "core": ["vae_model.py", "audio_extractor.py", "zangfu_mapper.py"],
+        "demo": "demo.py",
+        "train": "train.py"
+      },
+      "status": "active"
+    },
+    "03-PulsePINN": {
+      "name": "PulsePINN",
+      "name_cn": "脉象物理神经网络",
+      "description": "基于物理信息神经网络的脉象信号建模与辨证分析",
+      "keywords": ["PINN", "pulse signal", "physics-informed", "syndrome classification"],
+      "patent_ids": ["002"],
+      "paper_ids": ["C"],
+      "direction_ids": ["006", "007", "008"],
+      "tech_stack": ["PyTorch", "SciPy", "NumPy"],
+      "verification_metrics": {
+        "rmse": {"target": 0.05, "unit": "ratio"}
+      },
+      "files": {
+        "core": ["pinn_model.py", "pulse_pde.py", "syndrome_classifier.py"],
+        "demo": "demo.py",
+        "train": "train.py"
+      },
+      "status": "active"
+    },
+    "04-Quantum-TCM": {
+      "name": "Quantum-TCM",
+      "name_cn": "量子中医证候编码",
+      "description": "基于量子神经网络的中医证候高维向量表示与推理",
+      "keywords": ["quantum computing", "VQC", "syndrome encoding", "five elements constraint"],
+      "patent_ids": [],
+      "paper_ids": ["D"],
+      "direction_ids": ["009", "010"],
+      "tech_stack": ["PyTorch", "Qiskit", "PennyLane"],
+      "verification_metrics": {
+        "accuracy": {"target": 0.92, "unit": "ratio"}
+      },
+      "files": {
+        "core": ["syndrome_encoder.py", "vqc_circuit.py", "five_elements_constraint.py"],
+        "demo": "demo.py",
+        "train": "train.py"
+      },
+      "status": "active"
+    },
+    "05-TCMAGENT-plus": {
+      "name": "TCMAGENT-plus",
+      "name_cn": "多智能体中医协作系统",
+      "description": "基于多智能体协作的中医诊疗决策系统",
+      "keywords": ["multi-agent", "collaboration", "TCM diagnosis", "deliberation", "reasoning"],
+      "patent_ids": ["010", "016"],
+      "paper_ids": ["F"],
+      "direction_ids": ["036", "037", "038", "039", "040"],
+      "tech_stack": ["PyTorch", "LangChain"],
+      "verification_metrics": {
+        "f1_score": {"target": 0.85, "unit": "ratio"}
+      },
+      "files": {
+        "core": ["base_agent.py", "history_agent.py", "lab_agent.py", "tongue_agent.py", "deliberation.py", "multi_agent_system.py"],
+        "demo": "demo.py"
+      },
+      "status": "active"
+    },
+    "06-KGMAL-plus": {
+      "name": "KGMAL-plus",
+      "name_cn": "知识图谱终身学习系统",
+      "description": "基于灾难性遗忘抑制的知识图谱终身学习框架",
+      "keywords": ["knowledge graph", "lifelong learning", "catastrophic forgetting", "continual learning"],
+      "patent_ids": ["007"],
+      "paper_ids": ["G"],
+      "direction_ids": ["016", "017", "018", "019", "020"],
+      "tech_stack": ["PyTorch", "RDFLib", "NetworkX"],
+      "verification_metrics": {
+        "forgetting_suppression": {"target": 0.90, "unit": "ratio"}
+      },
+      "files": {
+        "core": ["kg_builder.py", "catastrophic_forgetting.py", "temporal_model.py"],
+        "demo": "demo.py"
+      },
+      "status": "active"
+    },
+    "07-TCMAug": {
+      "name": "TCMAug",
+      "name_cn": "中医数据增强系统",
+      "description": "基于深度卷积生成对抗网络的中医多模态数据增强",
+      "keywords": ["DCGAN", "data augmentation", "tongue image", "medical imaging"],
+      "patent_ids": [],
+      "paper_ids": ["H"],
+      "direction_ids": ["011", "012", "013", "014", "015"],
+      "tech_stack": ["PyTorch", "OpenCV"],
+      "verification_metrics": {
+        "fid": {"target": 50, "unit": "score", "lower_is_better": true}
+      },
+      "files": {
+        "core": ["dcgan_generator.py", "discriminator.py", "augmentation_pipeline.py"],
+        "demo": "demo.py"
+      },
+      "status": "active"
+    },
+    "08-TCMShield": {
+      "name": "TCMShield",
+      "name_cn": "中医智能体安全防御系统",
+      "description": "为中医智能体提供安全保障，检测和拦截危险输出",
+      "keywords": ["safety", "multi-agent", "TCM agent", "defense", "medication safety"],
+      "patent_ids": [],
+      "paper_ids": ["P"],
+      "direction_ids": ["041", "042", "043", "044", "045"],
+      "tech_stack": ["PyTorch", "NumPy"],
+      "verification_metrics": {
+        "intercept_rate": {"target": 0.94, "unit": "ratio"}
+      },
+      "files": {
+        "core": ["agent_shield.py", "mock_tcm_agent.py"],
+        "demo": "demo.py"
+      },
+      "status": "active"
+    },
+    "09-TCM-DiffRAG-plus": {
+      "name": "TCM-DiffRAG-plus",
+      "name_cn": "扩散检索增强生成系统",
+      "description": "基于扩散模型的检索增强生成系统用于中医诊断",
+      "keywords": ["RAG", "diffusion model", "knowledge graph", "retrieval", "TCM diagnosis"],
+      "patent_ids": [],
+      "paper_ids": ["I"],
+      "direction_ids": ["021", "022", "023", "024", "025"],
+      "tech_stack": ["PyTorch", "LangChain", "Chromadb"],
+      "verification_metrics": {
+        "accuracy": {"target": 0.85, "unit": "ratio"}
+      },
+      "files": {
+        "core": ["diff_rag.py", "kg_index.py"],
+        "demo": "demo.py"
+      },
+      "status": "active"
+    },
+    "10-TCM-Constitution-Risk": {
+      "name": "TCM-Constitution-Risk",
+      "name_cn": "中医体质疾病风险预测",
+      "description": "基于Cox风险模型的中医体质与疾病关联分析",
+      "keywords": ["constitution", "disease risk", "survival analysis", "Cox model", "TCM"],
+      "patent_ids": ["008"],
+      "paper_ids": ["J"],
+      "direction_ids": ["046", "047", "048", "049", "050"],
+      "tech_stack": ["PyTorch", "scikit-learn", "lifelines"],
+      "verification_metrics": {
+        "c_statistic": {"target": 0.75, "unit": "ratio"}
+      },
+      "files": {
+        "core": ["constitution_classifier.py", "cox_model.py", "survival_analysis.py"],
+        "demo": "demo.py"
+      },
+      "status": "active"
+    }
+  },
+
+  "patents": {
+    "001": {"title": "舌象3D-NeRF-高光谱", "domain": "computer vision", "status": "complete"},
+    "002": {"title": "脉象物理神经混合建模", "domain": "signal processing", "status": "complete"},
+    "003": {"title": "五行GNN证候转移", "domain": "knowledge graph", "status": "complete"},
+    "004": {"title": "闻诊语音情感VAE", "domain": "audio", "status": "complete"},
+    "005": {"title": "AR针灸取穴动态误差补偿", "domain": "robotics", "status": "complete"},
+    "006": {"title": "区块链中医处方流转", "domain": "blockchain", "status": "complete"},
+    "007": {"title": "中医知识终身学习Agent", "domain": "agent", "status": "complete"},
+    "008": {"title": "中医体质-疾病风险概率", "domain": "risk prediction", "status": "complete"},
+    "009": {"title": "中医五行GNN证候图谱", "domain": "knowledge graph", "status": "complete"},
+    "010": {"title": "多智能体中医会诊MACCM", "domain": "multi-agent", "status": "complete"},
+    "011": {"title": "古医籍方剂剂量换算引擎", "domain": "nlp", "status": "complete"},
+    "012": {"title": "强化学习针灸力度控制", "domain": "reinforcement learning", "status": "complete"},
+    "013": {"title": "中医数字伴侣AI-Agent", "domain": "agent", "status": "complete"},
+    "014": {"title": "中药指纹图谱DBN识别系统", "domain": "pattern recognition", "status": "complete"},
+    "015": {"title": "中医辨证论治数据评估系统", "domain": "evaluation", "status": "complete"},
+    "016": {"title": "智能处方合约生成引擎", "domain": "blockchain", "status": "complete"},
+    "017": {"title": "时令节气食疗推荐系统", "domain": "recommendation", "status": "complete"},
+    "018": {"title": "中药本草基因组测序分析", "domain": "genomics", "status": "complete"},
+    "019": {"title": "慢性病病程演进预测模型", "domain": "prediction", "status": "complete"},
+    "020": {"title": "虚拟中医病人模拟系统", "domain": "simulation", "status": "complete"},
+    "021": {"title": "中医临床受试者智能匹配", "domain": "matching", "status": "complete"},
+    "022": {"title": "中医触觉传感手套", "domain": "hardware", "status": "complete"},
+    "023": {"title": "长新冠中医证候分析", "domain": "analysis", "status": "complete"},
+    "024": {"title": "中医药产业链监管平台", "domain": "blockchain", "status": "complete"},
+    "025": {"title": "联邦学习中医隐私保护", "domain": "privacy", "status": "complete"},
+    "026": {"title": "中医智能诊断加速系统", "domain": "acceleration", "status": "complete"},
+    "027": {"title": "中医导诊分流系统", "domain": "triage", "status": "complete"},
+    "028": {"title": "中药纳米递送系统", "domain": "drug delivery", "status": "complete"},
+    "029": {"title": "中医疲劳监测可穿戴", "domain": "wearable", "status": "complete"},
+    "030": {"title": "中医逆向工程组方分析", "domain": "analysis", "status": "complete"},
+    "031": {"title": "中医证候因果推断", "domain": "causal inference", "status": "complete"},
+    "032": {"title": "五运六气天文历法AI", "domain": "time medicine", "status": "complete"},
+    "033": {"title": "中医皮肤光泽度分析", "domain": "computer vision", "status": "complete"},
+    "034": {"title": "中医眼底血管识别", "domain": "medical imaging", "status": "complete"},
+    "035": {"title": "中医微表情情绪识别", "domain": "emotion", "status": "complete"},
+    "036": {"title": "睡眠-脏腑相关分析", "domain": "correlation", "status": "complete"},
+    "037": {"title": "中医音乐疗法推荐", "domain": "recommendation", "status": "complete"},
+    "038": {"title": "艾灸机器人智能控制", "domain": "robotics", "status": "complete"},
+    "039": {"title": "针灸AR增强现实系统", "domain": "AR", "status": "complete"},
+    "040": {"title": "中医注射安全预警", "domain": "safety", "status": "complete"},
+    "041": {"title": "舌苔演化趋势分析", "domain": "prediction", "status": "complete"},
+    "042": {"title": "中医膏方推荐系统", "domain": "recommendation", "status": "complete"},
+    "043": {"title": "中医微表情辨证", "domain": "emotion", "status": "complete"},
+    "044": {"title": "中医睡眠-脏腑功能关联", "domain": "correlation", "status": "complete"},
+    "045": {"title": "中医AI音乐疗法", "domain": "music therapy", "status": "complete"},
+    "046": {"title": "中医智能艾灸机器人", "domain": "robotics", "status": "complete"},
+    "047": {"title": "中医针灸机器人精准定位", "domain": "robotics", "status": "complete"},
+    "048": {"title": "中药注射剂安全预警系统", "domain": "safety", "status": "complete"},
+    "049": {"title": "中医舌苔演化预测", "domain": "prediction", "status": "complete"},
+    "050": {"title": "中医膏方个体化推荐", "domain": "recommendation", "status": "complete"}
+  },
+
+  "papers": {
+    "A": {"title": "NeuroSymbolic-TCM", "project": "01-NeuroSymbolic-TCM", "status": "complete"},
+    "B": {"title": "AudioSense-TCM", "project": "02-AudioSense-TCM", "status": "complete"},
+    "C": {"title": "PulsePDE", "project": "03-PulsePINN", "status": "complete"},
+    "D": {"title": "Quantum-Syndrome", "project": "04-Quantum-TCM", "status": "complete"},
+    "E": {"title": "Embodied-Robot-Nursing", "project": "embodied", "status": "complete"},
+    "F": {"title": "TCMagent-MultiAgent", "project": "05-TCMAGENT-plus", "status": "complete"},
+    "G": {"title": "KGMAL-Lifelong", "project": "06-KGMAL-plus", "status": "complete"},
+    "H": {"title": "GAN-DataAug", "project": "07-TCMAug", "status": "complete"},
+    "I": {"title": "DiffRAG-Personalized", "project": "09-TCM-DiffRAG-plus", "status": "complete"},
+    "J": {"title": "Constitution-Disease-Risk", "project": "10-TCM-Constitution-Risk", "status": "complete"},
+    "K": {"title": "Agent-Adaptive-Dosage", "project": "adj Dosage", "status": "complete"},
+    "L": {"title": "BCI-Qigong", "project": "BCI-Qigong", "status": "complete"},
+    "M": {"title": "Longevity-Science", "project": "longevity", "status": "complete"},
+    "N": {"title": "Virtual-Patient-Simulation", "project": "virtual-patient", "status": "complete"},
+    "O": {"title": "Global-Translation", "project": "global-translation", "status": "complete"},
+    "P": {"title": "Agent-Safety-Defense", "project": "08-TCMShield", "status": "complete"},
+    "Q": {"title": "Subject-Matching", "project": "matching", "status": "complete"},
+    "R": {"title": "Syndrome-Causality", "project": "causality", "status": "complete"},
+    "S": {"title": "Nano-Drug-Delivery", "project": "nano-delivery", "status": "complete"},
+    "T": {"title": "Tongue-Segmentation", "project": "tongue", "status": "complete"},
+    "U": {"title": "Micro-Expression", "project": "micro-expression", "status": "complete"},
+    "V": {"title": "Sleep-Organ-Correlation", "project": "sleep-correlation", "status": "complete"},
+    "W": {"title": "Music-Therapy", "project": "music-therapy", "status": "complete"},
+    "X": {"title": "Skin-Luster", "project": "skin-luster", "status": "complete"},
+    "Y": {"title": "Retina-Blood-Qi", "project": "retina", "status": "complete"},
+    "Z": {"title": "Moxibustion-Robot", "project": "moxibustion-robot", "status": "complete"},
+    "AA": {"title": "Acupuncture-Robot-AR", "project": "acupuncture-robot", "status": "complete"},
+    "AB": {"title": "Injection-Safety", "project": "injection-safety", "status": "complete"},
+    "AC": {"title": "Paste-Recommendation", "project": "paste-recommendation", "status": "complete"},
+    "AD": {"title": "Long-COVID-Syndrome", "project": "long-covid", "status": "complete"}
+  },
+
+  "directions": {
+    "categories": {
+      "01_multimodal": {"name": "多模态感知", "ids": ["001-015"]},
+      "02_knowledge_graph": {"name": "知识图谱", "ids": ["016-035"]},
+      "03_ai_agent": {"name": "AI-Agent", "ids": ["036-055"]},
+      "04_herbal_drug": {"name": "中药研发", "ids": ["056-075"]},
+      "05_benchmark": {"name": "基准测评", "ids": ["076-100"]}
+    }
+  },
+
+  "statistics": {
+    "total_patents": 50,
+    "total_papers": 30,
+    "total_projects": 15,
+    "total_directions": 100,
+    "complete_patents": 50,
+    "complete_papers": 30,
+    "complete_projects": 15
+  }
+}

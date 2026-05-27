@@ -1,0 +1,20 @@
+# TCM-SCI-Patent-Forge - 依赖清单
+# 批量生成SCI论文与专利技术交底书
+
+# HTTP客户端（用于API调用）
+httpx>=0.25.0
+
+# 并行处理
+# （标准库自带：concurrent.futures）
+
+# JSON处理
+# （标准库自带：json）
+
+# 路径处理
+# （标准库自带：pathlib）
+
+# 可选：OpenAI SDK（如果使用OpenAI API）
+# openai>=1.0.0
+
+# 可选：进度条
+# tqdm>=4.65.0

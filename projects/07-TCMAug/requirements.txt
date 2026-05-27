@@ -1,0 +1,22 @@
+# 07-TCMAug Dependencies
+
+# Core
+torch>=2.0.0
+numpy>=1.24.0
+
+# Computer Vision
+torchvision>=0.15.0
+opencv-python>=4.8.0
+Pillow>=10.0.0
+
+# GAN
+torchvision
+
+# Data Processing
+scipy>=1.10.0
+
+# Visualization
+matplotlib>=3.7.0
+
+# Logging
+loguru>=0.7.0

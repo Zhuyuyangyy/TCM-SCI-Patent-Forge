@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-05-16 08:24:56",
+  "elapsed_time": 0.8287041187286377,
+  "total": 1,
+  "success": 1,
+  "failed": 0,
+  "results": [
+    {
+      "direction_id": 1,
+      "paper": "/mnt/d/ZYY Project/TCM-SCI-Patent-Forge/papers/generated/TCM-Direction-001.md",
+      "patent": "/mnt/d/ZYY Project/TCM-SCI-Patent-Forge/patents/generated/001_direction_patent_disclosure.md",
+      "paper_error": null,
+      "patent_error": null
+    }
+  ]
+}

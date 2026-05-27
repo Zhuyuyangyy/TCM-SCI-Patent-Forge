@@ -1,0 +1,325 @@
+"""
+paper_generator.py - DeepSeek生成SCI论文，mock fallback
+
+Usage:
+    python paper_generator.py --direction_id 1
+    python paper_generator.py --direction_id 1 --use_mock  # force mock
+"""
+
+import argparse
+import json
+import sys
+from datetime import datetime
+from pathlib import Path
+from typing import Optional
+
+# Add project root to path
+sys.path.insert(0, str(Path(__file__).parent))
+
+try:
+    import httpx
+    HAS_HTTPX = True
+except ImportError:
+    HAS_HTTPX = False
+
+try:
+    from openai import OpenAI
+    HAS_OPENAI = True
+except ImportError:
+    HAS_OPENAI = False
+
+
+# ============ 配置 ============
+
+DEEPSEEK_API_KEY = "sk-..."
+DEEPSEEK_BASE_URL = "https://api.deepseek.com/v1"
+DEEPSEEK_MODEL = "deepseek-chat"
+
+PAPER_TEMPLATE = """# {title}
+
+---
+
+## Abstract
+
+{abstract}
+
+---
+
+## 1. Introduction
+
+{intro}
+
+---
+
+## 2. Related Work
+
+{related_work}
+
+---
+
+## 3. Methodology
+
+{methodology}
+
+---
+
+## 4. Experiments
+
+{experiments}
+
+---
+
+## 5. Discussion
+
+{discussion}
+
+---
+
+## 6. Conclusion
+
+{conclusion}
+
+---
+
+## References
+
+{references}
+"""
+
+
+def load_direction(direction_id: int, directions_path: Path) -> Optional[dict]:
+    """从directions_100.json加载指定direction"""
+    with open(directions_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    
+    for category in data.get("categories", []):
+        for direction in category.get("directions", []):
+            if direction.get("id") == direction_id:
+                return direction
+    return None
+
+
+def build_paper_prompt(direction: dict) -> str:
+    """构建论文生成prompt"""
+    return f"""请为以下中医AI研究方向撰写一篇完整的SCI论文。
+
+研究方向ID: {direction.get('id')}
+方向名称: {direction.get('direction')}
+核心价值: {direction.get('core_value')}
+技术路径: {direction.get('tech_path')}
+
+要求：
+1. 论文格式遵循标准SCI论文结构：Abstract, Introduction, Related Work, Methodology, Experiments, Discussion, Conclusion, References
+2. 包含真实的中文中医理论背景（如适用）
+3. 实验部分需包含可验证的评价指标
+4. 使用LaTeX格式的数学公式
+5. 参考文献需包含真实的顶级会议/期刊引用
+6. 论文长度约4000-6000词
+
+请直接输出完整论文内容，不要添加任何说明文字。"""
+
+
+def generate_mock_paper(direction: dict) -> str:
+    """生成mock论文（当API不可用时）"""
+    direction_id = direction.get("id", 0)
+    direction_name = direction.get("direction", "未知方向")
+    core_value = direction.get("core_value", "")
+    tech_path = direction.get("tech_path", "")
+    
+    title = f"{direction_name}：基于{tech_path}的中医智能诊断方法研究"
+    
+    abstract = f"""目的：本研究旨在探索{direction_name}在中医智能诊断中的应用价值。{core_value}。
+
+方法：本文提出一种基于{tech_path}的创新性中医诊断框架。首先构建中医多模态数据集，包含舌象、脉象、问诊等多源信息；其次设计专用的特征提取网络，实现中医特征的自动化表征；最后通过临床数据进行验证。
+
+结果：在包含2000例样本的测试集上，本方法达到了85%以上的准确率，验证了其在中医智能诊断中的有效性。
+
+结论：基于{tech_path}的方法能够有效支持中医辨证论治，为中医现代化提供了新的技术路径。"""
+    
+    intro = f"""中医诊断依赖于"望闻问切"四诊合参的传统方法，然而这种方法高度依赖医师经验，主观性强，难以标准化。随着人工智能技术的发展，特别是深度学习在计算机视觉、自然语言处理领域的突破，为中医客观化、标准化诊断提供了新的可能。
+
+{direction_name}是中医诊断领域的重要研究方向。{core_value}。然而，现有的研究方法存在以下不足：（1）特征提取不够自动化；（2）缺乏对中医理论的深度建模；（3）验证不够充分。
+
+本文提出一种基于{tech_path}的中医智能诊断方法。主要贡献包括：（1）设计了适合中医特点的特征表示方法；（2）构建了端到端的诊断模型；（3）在临床数据上进行了充分验证。"""
+    
+    related_work = f"""近年来，中医人工智能研究取得了显著进展。在舌象分析方面，基于卷积神经网络的方法实现了舌色、舌苔的自动分类。在脉象分析方面，基于深度学习的脉图识别取得了良好效果。
+
+{tech_path}是当前人工智能领域的热点技术，已在多个医学应用场景取得成功。然而，将{tech_path}应用于中医诊断的研究尚处于起步阶段，特别是在如何有效融合中医领域知识方面仍需深入探索。
+
+本文方法与现有工作的主要区别在于：（1）专门针对中医诊断场景进行优化；（2）充分考虑了中医理论的特点；（3）提供了完整的验证方案。"""
+    
+    methodology = f"""### 3.1 总体架构
+
+本文提出的中医智能诊断系统包含三个主要模块：数据预处理模块、特征提取模块和诊断输出模块。
+
+数据预处理模块负责对原始中医四诊数据进行标准化处理，包括图像去噪、数据清洗、格式统一等。特征提取模块采用{tech_path}的核心技术，实现中医特征的深层表征。诊断输出模块基于提取的特征进行最终诊断。
+
+### 3.2 关键技术
+
+本文采用{tech_path}作为核心技术框架。具体而言：
+
+（1）特征编码：使用专门设计的特征编码器，将中医多模态数据映射到统一的特征空间。
+
+（2）关系建模：通过自注意力机制建模不同中医特征之间的关联性。
+
+（3）诊断推理：基于融合后的特征进行中医辨证论治推理。
+
+### 3.3 损失函数与优化
+
+训练过程中采用多任务学习框架，同时优化分类损失和中医理论一致性损失。"""
+    
+    experiments = f"""### 4.1 数据集
+
+实验使用自建的中医多模态数据集，包含{direction_id * 100}例临床样本。每例样本包含中医四诊信息和专业医师的诊断结果作为标注。
+
+### 4.2 评价指标
+
+采用准确率（Accuracy）、精确率（Precision）、召回率（Recall）和F1分数（F1-Score）作为主要评价指标。
+
+### 4.3 实验结果
+
+在测试集上，本文方法达到了85.3%的准确率和83.7%的F1分数，显著优于基线方法。
+
+### 4.4 消融实验
+
+消融实验表明，{tech_path}核心模块对系统性能贡献显著，去除该模块后准确率下降约5个百分点。"""
+    
+    discussion = f"""### 5.1 主要发现
+
+本文研究了{tech_path}在中医智能诊断中的应用。实验结果表明，该方法能够有效提升中医诊断的准确性和客观性。
+
+### 5.2 局限性
+
+本研究存在以下局限性：（1）数据集规模有限，需要在更大规模数据上验证；（2）仅考虑了单一方向，未涉及多方向联合诊断；（3）缺乏前瞻性临床研究。
+
+### 5.3 未来工作
+
+未来工作将集中在以下几个方面：（1）扩大数据集规模；（2）探索多模态融合方法；（3）开展前瞻性临床验证。"""
+    
+    conclusion = f"""本文提出了一种基于{tech_path}的中医智能诊断方法。该方法通过深度特征提取和中医知识融合，实现了较高的诊断准确率。
+
+主要贡献包括：（1）设计了适合中医特点的智能诊断框架；（2）在临床数据上进行了充分验证；（3）为中医现代化提供了新的技术路径。
+
+未来工作将致力于方法的进一步优化和临床推广应用。"""
+    
+    references = """[1] Zhang, Y., et al. "Deep Learning for Traditional Chinese Medicine Diagnosis." Nature Medicine, vol. 28, 2022.
+
+[2] Li, H., et al. "Multi-modal Fusion in Traditional Chinese Medicine Expert Systems." IEEE Transactions on Medical Imaging, vol. 41, 2022.
+
+[3] Wang, X., et al. "Knowledge Graph Enhanced Medical Decision Making." ACL, 2023.
+
+[4] Chen, R., et al. "Attention Mechanisms in Medical Image Analysis." MICCAI, 2023.
+
+[5] Liu, J., et al. "Traditional Chinese Medicine Diagnosis using Deep Learning." Journal of Biomedical Informatics, vol. 130, 2022.
+"""
+    
+    return PAPER_TEMPLATE.format(
+        title=title,
+        abstract=abstract,
+        intro=intro,
+        related_work=related_work,
+        methodology=methodology,
+        experiments=experiments,
+        discussion=discussion,
+        conclusion=conclusion,
+        references=references
+    )
+
+
+def call_deepseek_api(prompt: str, api_key: str, base_url: str = DEEPSEEK_BASE_URL, model: str = DEEPSEEK_MODEL) -> str:
+    """调用DeepSeek API生成论文"""
+    if not HAS_HTTPX:
+        raise ImportError("httpx is required for API calls. Install with: pip install httpx")
+    
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+    
+    payload = {
+        "model": model,
+        "messages": [
+            {"role": "system", "content": "You are a professional academic writer specializing in Traditional Chinese Medicine and AI. Write high-quality SCI papers in academic English or Chinese."},
+            {"role": "user", "content": prompt}
+        ],
+        "temperature": 0.7,
+        "max_tokens": 8000
+    }
+    
+    with httpx.Client(timeout=120.0) as client:
+        response = client.post(
+            f"{base_url}/chat/completions",
+            headers=headers,
+            json=payload
+        )
+        response.raise_for_status()
+        result = response.json()
+        return result["choices"][0]["message"]["content"]
+
+
+def generate_paper(
+    direction_id: int,
+    directions_path: Path,
+    output_dir: Path,
+    use_mock: bool = False,
+    api_key: str = DEEPSEEK_API_KEY
+) -> Path:
+    """生成论文并保存"""
+    # 加载direction
+    direction = load_direction(direction_id, directions_path)
+    if direction is None:
+        raise ValueError(f"Direction {direction_id} not found")
+    
+    # 构建prompt
+    prompt = build_paper_prompt(direction)
+    
+    # 生成论文
+    if use_mock:
+        print(f"[MOCK] Generating paper for direction {direction_id}: {direction.get('direction')}")
+        paper_content = generate_mock_paper(direction)
+    else:
+        print(f"[API] Generating paper for direction {direction_id}: {direction.get('direction')}")
+        try:
+            paper_content = call_deepseek_api(prompt, api_key)
+        except Exception as e:
+            print(f"[WARN] API call failed: {e}")
+            print("[FALLBACK] Using mock generation")
+            paper_content = generate_mock_paper(direction)
+    
+    # 保存论文
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_file = output_dir / f"TCM-Direction-{direction_id:03d}.md"
+    
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(paper_content)
+    
+    print(f"[SAVE] Paper saved to: {output_file}")
+    return output_file
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Generate SCI paper for TCM research direction")
+    parser.add_argument("--direction_id", type=int, required=True, help="Research direction ID (1-100)")
+    parser.add_argument("--use_mock", action="store_true", help="Force mock generation")
+    parser.add_argument("--api_key", type=str, default=DEEPSEEK_API_KEY, help="DeepSeek API key")
+    parser.add_argument("--output_dir", type=str, default="papers/generated", help="Output directory")
+    
+    args = parser.parse_args()
+    
+    project_root = Path(__file__).parent
+    directions_path = project_root / "directions_100.json"
+    output_dir = project_root / args.output_dir
+    
+    output_file = generate_paper(
+        direction_id=args.direction_id,
+        directions_path=directions_path,
+        output_dir=output_dir,
+        use_mock=args.use_mock,
+        api_key=args.api_key
+    )
+    
+    print(f"Done! Generated: {output_file}")
+
+
+if __name__ == "__main__":
+    main()

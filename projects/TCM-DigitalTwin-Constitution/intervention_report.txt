@@ -1,0 +1,30 @@
+============================================================
+Constitution Digital Twin - Intervention Counterfactual Report
+============================================================
+Baseline: <ConstitutionVector: 潿热质(0.85), Yin=0.35, Yang=0.55>
+Dominant: 潿热质
+Yin-Yang: YinYangState.YANG_XU
+Qi-Blood: QiBloodState.QI_XUE_BALANCED
+------------------------------------------------------------
+Intervention Comparison
+------------------------------------------------------------
+--- Plan A - Exercise ---
+  Dominant change: 潿热质 -> 潿热质
+  Improvement: 0.237
+  Balanced: 0.0 -> 0.0
+--- Plan B - Exercise+Diet ---
+  Dominant change: 潿热质 -> 潿热质
+  Improvement: 0.237
+  Balanced: 0.0 -> 0.0
+--- Plan C - Combined ---
+  Dominant change: 潿热质 -> 潿热质
+  Improvement: 0.237
+  Balanced: 0.0 -> 0.0
+--- Plan D - Enhanced ---
+  Dominant change: 潿热质 -> 潿热质
+  Improvement: 0.237
+  Balanced: 0.0 -> 0.0
+============================================================
+Recommendation
+============================================================
+Based on improvement score, recommend: [Plan A - Exercise]
