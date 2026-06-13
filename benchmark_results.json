@@ -1,4 +1,5 @@
 {
+  "_DISCLAIMER": "WARNING: TCMShield F1=1.0 result is likely inflated due to data leakage — test cases are rule-generated and overlap with the rule engine used by TCMShield. The perfect score does NOT reflect real-world adversarial defense capability. Use the red-team results (94.3% interception rate) as the realistic performance estimate. All data is synthetic; no real clinical data was used. No ablation studies or real-world baselines have been completed.",
   "timestamp": "2026-05-27 20:53:50",
   "total_cases": 1200,
   "scenario_counts": {

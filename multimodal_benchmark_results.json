@@ -1,4 +1,5 @@
 {
+  "_DISCLAIMER": "WARNING: ALL data in this file is SYNTHETIC/SIMULATED. No real clinical data was used. No ablation studies or real baselines have been completed. These results are for development/demonstration purposes only and do NOT represent real-world performance.",
   "TongueOnly": 0.41999998688697815,
   "VoiceOnly": 0.18000000715255737,
   "FaceOnly": 0.6800000071525574,

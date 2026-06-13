@@ -1,4 +1,5 @@
 {
+  "_DISCLAIMER": "WARNING: ALL data in this file is SYNTHETIC/SIMULATED. No real clinical data was used. No ablation studies or real baselines have been completed. These results are for development/demonstration purposes only and do NOT represent real-world performance.",
   "IPW": {
     "ate": 3.056436563259309,
     "bias": 1.0564365632593091,

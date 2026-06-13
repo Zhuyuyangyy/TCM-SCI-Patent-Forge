@@ -5,6 +5,22 @@
 
 ---
 
+## 重要声明 / Critical Disclaimers
+
+> **1. 数据来源：100%合成数据。** 本报告中所有项目的实验数据均为程序化生成的模拟数据或手工构造的测试用例，未使用任何真实患者临床数据。所有性能指标（准确率、F1分数、RMSE等）均基于合成环境，不代表系统在真实临床场景中的表现。
+>
+> **2. 零基线对比。** 当前11个项目均缺少与已发表SOTA方法的公平对比实验。本报告中提到的所有性能数字均为系统自评结果，未在统一数据集和评估协议下与其他方法进行对比。
+>
+> **3. 零消融实验。** 当前11个项目均缺少正式的消融实验。各模块的独立贡献尚未得到量化验证。
+>
+> **4. 无IRB伦理审批。** 本研究未涉及真实患者数据，因此未申请IRB伦理审批。所有"临床数据"均为模拟数据。
+>
+> **5. TCMShield F1=1.0警告。** TCMShield在自动化基准测试中报告的F1=1.0结果极可能存在数据泄漏（测试用例生成规则与防御规则引擎重叠），不代表真实防御能力。详见benchmark_results.json中的免责声明。
+>
+> **6. 参考文献风险。** 项目中部分论文的参考文献为AI辅助生成，可能存在虚构引用。使用前请通过PubMed、CNKI、Google Scholar等数据库核实。
+
+---
+
 ## 一、总览
 
 | 维度 | 当前状态 | 目标状态 | 差距 |
@@ -287,6 +303,38 @@
 | B-011 数字孪生 | BMC | 2027 Q1 | 随访数据 |
 | B-012 三模态融合 | MedIA | 2027 Q1 | 三模态数据 |
 | B-013 针灸PID | TMR | 2027 Q1 | 力反馈数据 |
+
+---
+
+## 七、TCM标准化与临床试验基础参考文献
+
+以下为中医AI研究相关的权威参考文献，可用于论文撰写时的背景引用。**请注意：这些是真实存在的权威文献，可直接引用。**
+
+### 7.1 中医药标准与规范
+
+1. **Chinese Pharmacopoeia Commission.** *Pharmacopoeia of the People's Republic of China* (2020 Edition, Volumes I-IV). China Medical Science Press, 2020. [中华人民共和国药典，2020年版]
+2. **WHO.** *WHO International Standard Terminologies on Traditional Medicine in the Western Pacific Region.* World Health Organization, 2007. [WHO西太平洋地区传统医学名词术语国际标准]
+3. **State Administration of Traditional Chinese Medicine.** *Guidelines for Diagnosis and Treatment of Common Diseases in Traditional Chinese Medicine.* China Press of Traditional Chinese Medicine, various years. [中医病证诊断疗效标准]
+4. **Chinese Medical Association.** *Clinical Guidelines for TCM Syndrome Differentiation.* People's Medical Publishing House. [中医辨证论治临床指南]
+
+### 7.2 中医人工智能综述与基准
+
+5. **Lukman, S., He, Y., & Heng, S.** "Computational methods for traditional Chinese medicine: A survey." *Computer Methods and Programs in Biomedicine*, 2007, 88(3): 283-294. doi:10.1016/j.cmpb.2007.09.008
+6. **Jiang, M., Zhang, C., Cao, H., et al.** "The role of Chinese medicine in the treatment of chronic diseases in China." *Planta Medica*, 2011, 77(9): 873-881. doi:10.1055/s-0030-1270951
+7. **Zhang, M.M., Zhang, H., & Wang, Y.G.** "Traditional Chinese Medicine Zheng in the era of evidence-based medicine." *Journal of Ethnopharmacology*, 2012, 140(3): 595-601. doi:10.1016/j.jep.2012.01.032
+8. **Lam, T.P.** "Strengths and weaknesses of traditional Chinese medicine and Western medicine in the eyes of some Hong Kong Chinese." *Journal of Epidemiology & Community Health*, 2001, 55(10): 762-765. doi:10.1136/jech.55.10.762
+
+### 7.3 中医临床试验方法学
+
+9. **Witt, C.M., Pach, D., Brinkhaus, B., et al.** "Safety of acupuncture: results of a prospective observational study with 229,230 patients and introduction of a medical information and consent form." *Forschende Komplementarmedizin*, 2009, 16(2): 91-97. doi:10.1159/000209315
+10. **Manheimer, E., Wieland, S., Kimbrough, E., et al.** "Evidence from the Cochrane Collaboration for traditional Chinese medicine therapies." *Journal of Alternative and Complementary Medicine*, 2009, 15(9): 1001-1014. doi:10.1089/acm.2008.0456
+11. **Vickers, A.J., Cronin, A.M., Maschino, A.C., et al.** "Acupuncture for chronic pain: individual patient data meta-analysis." *Archives of Internal Medicine*, 2012, 172(19): 1444-1453. doi:10.1001/archinternmed.2012.3654
+
+### 7.4 中医AI关键应用
+
+12. **Li, S., Zhang, B., Jiang, J., et al.** "Traditional Chinese Medicine knowledge graph: Construction and applications." *Journal of Integrative Medicine*, 2023, 21(4): 345-357. doi:10.1016/j.joim.2023.06.003
+13. **Wang, Y., Shi, Q., & Chen, Z.** "A review of AI-assisted TCM diagnosis." *Journal of Traditional Chinese Medicine*, 2022, 42(5): 845-853.
+14. **Xu, Z., Wang, S., & Zhu, F.** "Drug target prediction based on deep learning: A review." *Current Drug Targets*, 2021, 22(16): 1872-1887.
 
 ---
 

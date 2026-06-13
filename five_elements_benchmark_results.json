@@ -1,4 +1,5 @@
 {
+  "_DISCLAIMER": "WARNING: ALL data in this file is SYNTHETIC/SIMULATED. No real clinical data was used. No ablation studies or real baselines have been completed. These results are for development/demonstration purposes only and do NOT represent real-world performance.",
   "RuleOnly": {
     "accuracy": 0.076,
     "five_elem_consistency": 0.6055
@@ -9,9 +10,9 @@
   },
   "FiveElementsGNN": {
     "top3": [
-      "ĞÄÉö²»½»",
-      "ĞÄ»ğ¿ºÊ¢",
-      "Æ¢Î¸ÊªÈÈ"
+      "å¿ƒè‚¾ä¸äº¤",
+      "å¿ƒç«äº¢ç››",
+      "è„¾èƒƒæ¹¿çƒ­"
     ],
     "fe_consistency": 0.6356240548193455
   }

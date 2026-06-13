@@ -1,4 +1,5 @@
 {
+  "_DISCLAIMER": "WARNING: ALL data in this file is SYNTHETIC/SIMULATED. No real clinical data was used. No ablation studies or real baselines have been completed. These results are for development/demonstration purposes only and do NOT represent real-world performance.",
   "StaticClassifier": {
     "accuracy": 0.494,
     "recall": 0.16225165562913907
@@ -12,6 +13,6 @@
     "recall": 0.1291390728476821
   },
   "DigitalTwin-Ours": {
-    "recommendation": "∞¨æƒ_30d"
+    "recommendation": "ËâæÁÅ∏_30d"
   }
 }

@@ -17,6 +17,10 @@ DATABASE_DIR = PROJECT_ROOT / "database"
 DOCS_DIR = PROJECT_ROOT / "docs"
 
 # 验证指标配置
+# DISCLAIMER: These are ASPIRATIONAL TARGETS, NOT validated results.
+# All values below are design goals for future experiments. No real experimental
+# validation has been performed. All data is synthetic/simulated.
+# DO NOT cite these as actual experimental results.
 VERIFICATION_METRICS = {
     "01-NeuroSymbolic-TCM": {
         "accuracy": 0.89,
