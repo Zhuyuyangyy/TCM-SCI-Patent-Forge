@@ -209,8 +209,8 @@ project-name/
 ## 📧 联系方式
 
 - **项目负责人**: ZYY Project Team
-- **邮箱**: tcm-research@example.com
-- **主页**: https://github.com/your-repo/TCM-SCI-Patent-Forge
+- **邮箱**: 1578804454@qq.com
+- **主页**: https://github.com/ZhuYuyang/TCM-SCI-Patent-Forge
 
 ---
 
